@@ -7,14 +7,13 @@ check(int x, int y)
    -add board[x][y]'s index in the targetcells    
    -iterate through the four adjacent cells,
     for(i=-1;i<2;i+2)
-      for(j=-1;j<2;j+2)
-          - check for boundary condition      // cell exists for the current i,j
+                - check for boundary condition      // cell exists for the current i,j
                 if the boudary condition fails, continue;
-          - check if board[x][y]=board[x+i][y+j]
+          - check if board[x][y]=board[x+i][y] 
                -if true, check if the cell is already check()ed ,ie, check for the cell's index in targetcells.
-                     if false check(x+i,y+j);  //fyi , recursion occurs here
-                     
-     
+                     if false check(x+i,y);  //fyi , recursion occurs here
+           - do the same for board[x][y+i]       
+                  ....
 
 } // after the execution you can check the targetcell to get the indice(s) of the cells to be deleted.
 
