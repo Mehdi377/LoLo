@@ -4,35 +4,49 @@
 #include <ctime>
 using namespace std; 
 int Board[5][5]={{0}};
+int target[5][5]={{0}};
 int checkx=0, checky=0; 
 int sizex=5 , sizey=5;
 bool lose , FirstRun; 
 
-/*int checkBoard(int board[5][5] , int x , int y , int n)
+int check(int board[5][5] , int x , int y)
 {
 	
-	int i=1 , X=x;
-	if(n>=0)
+for (int i = x - 1; i <= x + 1 ; i++)
 	{
-		if (board[x][y]==board[x][y-1])
+		for (int j = y - 1; j <= y + 1 ; j++)
 		{
-			board[x][y-1]=board[x][y-2];
+			target[i][j]=1;
+			if(board[i][j]==-1)
+				continue;
+			if (i < 0)
+				continue;
+			if (i >= 5)
+				continue;
+			if (j < 0)
+				continue;
+			if (j >= 5)
+				continue;
+			if (i==x-1 && j==y-1)
+				continue;
+			if (i==x-1 && j==y+1)
+				continue;
+			if (i==x+1 && j==y-1)
+				continue;
+			if (i==x+1 && j==y+1)
+				continue;
+			if (i==x && j==y)
+				continue;
+		
+			if(board[i][j]==board[x][y])
+				board[i][j]=-1;
+
+			if(target[i][j]!=1)
+				check(board , i , j);
 		}
-		return(board[x][y],x,y-1,n);
-		n--;
 	}
-	else
-		return 1;
-
 	
-	
-	
-	if (board[x][y]==board[x][y-1] || board[x][y]==board[x][y+1] || board[x][y]==board[x+1][y] || board[x-1][y]==board[x][y])
-	{
-		board[x][y]=board[x][y]+1;
-	}
-
-}*/
+}
 
 
 void drawBoad() 
@@ -95,7 +109,7 @@ while (lose != true)
 		cout << endl << "Input y grid to check." << endl; 
 		cin >> checky; 
 	 	
-		//checkBoard(Board , checkx , checky , Board[checkx][checky]);
+		check(Board , checkx , checky);
 
 		drawBoad(); 
 		cout << endl; 
@@ -103,4 +117,3 @@ while (lose != true)
  	
  return 0;
 }
-
