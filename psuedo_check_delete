@@ -7,7 +7,7 @@ check(int x, int y)
    -add board[x][y]'s index in the targetcells    
    -iterate through the four adjacent cells,
     for(i=-1;i<2;i+2)
-                - check for boundary condition      // cell exists for the current i,j
+                - check for boundary condition      // if board[x+i][y] exists
                 if the boudary condition fails, continue;
           - check if board[x][y]=board[x+i][y] 
                -if true, check if the cell is already check()ed ,ie, check for the cell's index in targetcells.
