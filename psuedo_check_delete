@@ -1,0 +1,42 @@
+//psuedo code for check()
+
+define a global array "targetcells" to identify the cells to be deleted. implementation can be done in multiple ways , so i leave it to you.
+
+check(int x, int y)  
+{
+   -add board[x][y]'s index in the targetcells    
+   -iterate through the four adjacent cells,
+    for(i=-1;i<2;i+2)
+      for(j=-1;j<2;j+2)
+          - check for boundary condition      // cell exists for the current i,j
+                if the boudary condition fails, continue;
+          - check if board[x][y]=board[x+i][y+j]
+               -if true, check if the cell is already check()ed ,ie, check for the cell's index in targetcells.
+                     if false check(x+i,y+j);
+                     
+     
+
+} // after the execution you can check the targetcell to get the indice(s) of the cells to be deleted.
+
+
+
+
+//psuedo code for deletion
+
+delete(int x, int y, int num)    //(x,y) is the input cell  index and num is the number you want in it after deletion
+{
+    iterate through the board  // lets say with indices i,j
+      if the index is present in targetcells,
+            board[i][i]=-1;
+            and remove the entry from targetcells
+            
+    board[x][y]=num; // you dont want to  delete the selected cell ;)
+    
+    iterate thourgh the board, bottom to top ,each column at a time
+    for(i=4;i>0;i--)
+       for(j=4;j>0;j--)
+        if board[i][j]==-1
+            board[i][j]=board[i-1][j]
+            board[i-1][j]=-1;
+ }       // after executing this function board[][] might have empty cells(-1) at the top. 
+         //check for -1 and fill them with random numbers, using another function.
