@@ -12,7 +12,7 @@ check(int x, int y)
                 if the boudary condition fails, continue;
           - check if board[x][y]=board[x+i][y+j]
                -if true, check if the cell is already check()ed ,ie, check for the cell's index in targetcells.
-                     if false check(x+i,y+j);
+                     if false check(x+i,y+j);  //fyi , recursion occurs here
                      
      
 
